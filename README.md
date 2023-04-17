@@ -7,7 +7,7 @@ In this project, I took on the role of a data scientist working for a health tec
  2. Diabetes
  3. Parkinsons Disease
 
-The web-app was built using Streamlit an open-source Python framework for developing web apps for machine learning and data science problems. This project is specifically made for experts in the health industry such as Oncologists, Endocrinologists, Neurologists and Cardiologist as they have a better understanding of the data required to use this app.
+The web-app was built using Streamlit an open-source Python framework for developing web apps for machine learning and data science problems and hosted on Streamlit Community Cloud. This project is specifically made for experts in the health industry such as Oncologists, Endocrinologists, Neurologists and Cardiologist as they have a better understanding of the data required to use this app.
 
 
 
