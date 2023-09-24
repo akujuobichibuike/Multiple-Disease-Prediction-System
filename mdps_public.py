@@ -12,11 +12,11 @@ import numpy as np
 
 # loading the saved models
 
-diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
+diabetes_model = pickle.load(open('Models/diabetes_model.sav', 'rb'))
 
-heart_disease_model = pickle.load(open('heart_disease_model.sav', 'rb'))
+heart_disease_model = pickle.load(open('Models/heart_disease_model.sav', 'rb'))
 
-breast_cancer_model = pickle.load(open('breast_cancer.sav', 'rb'))
+breast_cancer_model = pickle.load(open('Models/breast_cancer.sav', 'rb'))
 
 # sidebar for navigation
 with st.sidebar:
