@@ -17,9 +17,6 @@ heart_disease_model = pickle.load(open('heart_disease_model.sav', 'rb'))
 
 breast_cancer_model = pickle.load(open('breast_cancer.sav', 'rb'))
 
-
-
-
 # sidebar for navigation
 with st.sidebar:
     
@@ -69,18 +66,20 @@ if (selected == 'Diabetes Prediction'):
     # code for Prediction
     diab_diagnosis = ''
     
-    # creating a button for Prediction
-    
-    if st.button('Diabetes Test Result'):
-        diab_prediction = diabetes_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
-        
-        if (diab_prediction[0] == 1):
-          diab_diagnosis = 'The person is diabetic'
-        else:
-          diab_diagnosis = 'The person is not diabetic'
-        
+def predict_outcome(model, test_data):
+    class_labels = ["Not Diabetic", "Diabetic"]
+    prediction = model.predict_proba(test_data)
+    result = np.argmax(prediction)
+    outcome = class_labels[result]
+
+    return f"Patient is {outcome} with a {prediction[0][result] * 100:.2f}% chance"
+
+ # creating a button for Prediction
+if st.button('Diabetes Test Result'):
+    diab_prediction = diabetes_model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
+    diab_diagnosis = predict_outcome(diabetes_model, [[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]])
+   
     st.success(diab_diagnosis)
-    
     
     
 # Heart Disease Prediction Page
@@ -130,26 +129,17 @@ if (selected == 'Heart Disease Prediction'):
     with col1:
         thal = st.slider('thal: 0 = normal; 1 = fixed defect; 2 = reversable defect', 0, 3, 0, 1)
         
-    
-    # code for Prediction
-    heart_diagnosis = ''
-    
-    # creating a button for Prediction
-    
-    if st.button('Heart Disease Test Result'):
-        heart_prediction = heart_disease_model.predict([[age, sex, cp, trestbps, chol, fbs, restecg,thalach,exang,oldpeak,slope,ca,thal]])                          
-        
-        if (heart_prediction[0] == 1):
-          heart_diagnosis = 'Heart Disease detected!'
-        else:
-          heart_diagnosis = 'Heart Disease not detected!'
-        
-    st.success(heart_diagnosis)
-    
-    
-    
-    
+# code for Prediction
+heart_diagnosis = ''
 
+# creating a button for Prediction
+if st.button('Heart Disease Test Result'):
+    heart_probability = heart_disease_model.predict_proba([[age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]])
+    heart_diagnosis = f'The patient has a {heart_probability[0][1]*100:.2f}% chance of having heart disease'
+
+st.success(heart_diagnosis)
+
+ 
 # Breast Cancer Prediction Page
 if (selected == 'Breast Cancer Prediction'):
     
@@ -176,18 +166,21 @@ if (selected == 'Breast Cancer Prediction'):
     
     with col1:
         concave_points_mean = st.slider('Concave Points Mean', 0.0, 50.0, 1.0, 1.0)
+               
         
-    # code for Prediction
-    breast_cancer_diagnosis = ''
+# code for Prediction
+breast_cancer_diagnosis = ''
+
+# creating a button for Prediction
+if st.button("Breast Cancer Test Result"):
+    breast_cancer_probability = breast_cancer_model.predict_proba([[radius_mean, perimeter_mean, area_mean, symmetry_mean, compactness_mean, concave_points_mean]])
     
-    # creating a button for Prediction    
-    if st.button("Breast Cancer Test Result"):
-        breast_cancer_prediction = breast_cancer_model.predict([[radius_mean, perimeter_mean, area_mean, symmetry_mean, compactness_mean, concave_points_mean]])                          
-        
-        if (breast_cancer_prediction[0] == 1):
-          breast_cancer_diagnosis = "The Breast Cancer is Benign"
-        else:
-          breast_cancer_diagnosis = "The Breast Cancer is Malignant"
-        
-    st.success(breast_cancer_diagnosis)
-        
+    # Probability of malignant breast cancer
+    probability_malignant = breast_cancer_probability[0][1]
+    
+    if probability_malignant >= 0.5:
+        breast_cancer_diagnosis = "The tumor is Malignant"
+    else:
+        breast_cancer_diagnosis = "The tumor is Benign"
+
+st.success(breast_cancer_diagnosis)
