@@ -1,5 +1,4 @@
 # MULTIPLE DISEASE PREDICTION SYSTEM.
-![GitHub license](https://img.shields.io/github/license/akujuobichibuike/Multiple-Disease-Prediction-System)
 
 This is a personal project done by me Chibuike Victor Akujuobi and reviewed by my friends Teyira Peter Geo-Needam & Emmanuel Ugochukwu. This project was done to enable me strengthen my skills in data analysis, visualization and the usage of python libraries such as streamlit, sklearn, seaborn and matplotlib to gain more experience in Machine learning. This project implements a Multiple Disease Prediction System with individual components for predicting diabetes, heart disease, and breast cancer. It includes a Streamlit web application for easy interaction.
 
