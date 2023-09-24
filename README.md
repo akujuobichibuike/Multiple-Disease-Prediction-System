@@ -11,7 +11,6 @@ This is a personal project done by me Chibuike Victor Akujuobi and reviewed by m
 - [Technologies Used](#technologies-used)
 - [How to Use](#how-to-use)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Overview
@@ -92,10 +91,6 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 3. Make your changes and test them thoroughly.
 4. Commit your changes and push to your fork.
 5. Open a pull request to the main repository with a clear description of your changes.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
