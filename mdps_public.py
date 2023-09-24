@@ -83,7 +83,7 @@ if st.button('Diabetes Test Result'):
     
     
 # Heart Disease Prediction Page
-if (selected == 'Heart Disease Prediction'):
+elif (selected == 'Heart Disease Prediction'):
     
     # page title
     st.title('Heart Disease Prediction using ML')
@@ -141,7 +141,7 @@ st.success(heart_diagnosis)
 
  
 # Breast Cancer Prediction Page
-if (selected == 'Breast Cancer Prediction'):
+elif (selected == 'Breast Cancer Prediction'):
     
     st.title('Breast Cancer Prediction using ML')
     
